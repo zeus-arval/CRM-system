@@ -3,16 +3,22 @@ import HomeView from '../views/HomeView.vue'
 
 const routes = [
   {
-    path: '/',
-    name: 'home',
-    meta: {layout: 'main'},
-    component: HomeView
+    path: '/register',
+    name: 'register',
+    meta: {layout: 'empty'},
+    component: () => import('../views/RegisterView.vue')
   },
   {
     path: '/login',
     name: 'login',
     meta: {layout: 'empty'},
     component: () => import('../views/LoginView.vue')
+  },
+  {
+    path: '/',
+    name: 'home',
+    meta: {layout: 'main'},
+    component: HomeView
   },
   {
     path: '/categories',
@@ -49,17 +55,13 @@ const routes = [
     name: 'record',
     meta: {layout: 'main'},
     component: () => import('../views/RecordView.vue')
-  },
-  {
-    path: '/register',
-    name: 'register',
-    meta: {layout: 'empty'},
-    component: () => import('../views/RegisterView.vue')
   }
 ]
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
+  mode: 'history',
+  base: process.env.BASE_URL,
   routes
 })
 
